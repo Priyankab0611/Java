@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_demo/model/messagelist.dart';
-import 'package:whatsapp_demo/model/user_model.dart';
+import 'package:whatsapp_ui/model/messagelist.dart';
+import 'package:whatsapp_ui/model/user_model.dart';
 
 class ChatScreen extends StatefulWidget {
   final User user;
@@ -17,6 +17,7 @@ class _ChatScreenState extends State<ChatScreen> {
       return Column(
         children: <Widget>[
           Container(
+            
             alignment: Alignment.topRight,
             child: Container(
               constraints: BoxConstraints(
@@ -25,7 +26,7 @@ class _ChatScreenState extends State<ChatScreen> {
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.symmetric(vertical: 10),
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
+                color: const Color(0xffDCf8c6),
                 borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(
@@ -38,7 +39,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Text(
                 message.text,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
             ),
@@ -51,7 +52,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       message.time,
                       style: TextStyle(
                         fontSize: 12,
-                        color: Colors.black45,
+                        color: Colors.black,
                       ),
                     ),
                     SizedBox(
@@ -86,7 +87,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Text(
                 message.text,
                 style: TextStyle(
-                  color: Colors.black54,
+                  color: Colors.black,
                 ),
               ),
             ),
@@ -98,7 +99,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       message.time,
                       style: TextStyle(
                         fontSize: 12,
-                        color: Colors.black45,
+                        color: Colors.black54,
                       ),
                     ),
                   ],
@@ -134,7 +135,7 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
             icon: Icon(Icons.send),
             iconSize: 20,
-            color: Theme.of(context).primaryColor,
+            color: const Color(0xff12807E),
             onPressed: () {},
           ),
           IconButton(
@@ -154,7 +155,7 @@ class _ChatScreenState extends State<ChatScreen> {
             height: 50.0,
             child: Icon(Icons.mic),
             decoration: BoxDecoration(
-                color: Colors.green,
+                color: const Color(0xff12807E),
                 borderRadius: BorderRadius.circular(100.0)),
           ),
         ],
@@ -169,6 +170,7 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: Color(0xFFF6F6F6),
         appBar: AppBar(
           brightness: Brightness.dark,
+          backgroundColor: const Color(0xff12807E),
           centerTitle: true,
           titleSpacing: -15.0,
           title: ListTile(
@@ -191,7 +193,16 @@ class _ChatScreenState extends State<ChatScreen> {
             SizedBox(
               width: 25.0,
             ),
-            Icon(Icons.more_vert)
+            PopupMenuButton(itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(child: Text("View Contact")),
+                PopupMenuItem(child: Text("Media, link and docs")),
+                PopupMenuItem(child: Text("Search")),
+                PopupMenuItem(child: Text(" Mute Notification")),
+                PopupMenuItem(child: Text(" Wallpaper")),
+                PopupMenuItem(child: Text("More")),
+              ];
+            })
           ],
         ),
         body: Column(
